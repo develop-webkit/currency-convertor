@@ -27,9 +27,9 @@ input:focus-visible  {
 }
 
 .exchange-icon{
-    max-width:32px;
+    max-width:20px;
     cursor:pointer;
-    margin-top: 25px;
+    margin-top: 30px;
 }
 
 .footer-notes{
@@ -47,16 +47,15 @@ input:focus-visible  {
 h1{
     margin-top:0;
   }
-  
-  .input-div{
-    margin:10px 0;
-  }
-  
-  #input-number{
-      margin-top:20px;
-  }
-  
-  input,select{
+
+.result-div,  
+.btn-div, 
+.input-div,
+.cur-selection-div{
+    margin-top:20px;
+}
+    
+input,select{
     width:100%;
     height:40px;
     background-color:#f9f9f9;
@@ -65,37 +64,33 @@ h1{
     border-radius:5px;
     margin-top:10px;
     vertical-align: text-bottom;
-  }
+}
   
 input:focus,
 select:focus{
   border-color:#983D80;
 }
 
-  .cur-selection-div{
+.cur-selection-div{
     display:flex;
     gap:10px;
     justify-content: center;
-  }
+}
+
+.cur-selection-div label{
+    width: 100%;
+    position: relative;
+}
   
-  .cur-selection-div label{
-      width: 100%;
-      position: relative;
-  }
-  
-  .cur-selection-div .cur-sub-div{
+.cur-selection-div .cur-sub-div{
     display:flex;
     justify-content:center;
     align-items:center;
     width: 100%;
-  }
+}
 
-  .result-div{
-    margin-top:20px;
-  }
-  
-.btn-div{
-    margin-top:20px;
+.cur-selection-div .cur-sub-div:nth-child(2){
+    width: 50px;
 }
   
 #submit-btn{
@@ -119,10 +114,48 @@ select:focus{
     border:1px solid #d3d3d3;
     border-radius:3px;
     padding:5px; 
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
 }
 
 #toCur,
 #toCur{
     list-style: none;
     padding-left:0;
+}
+
+#toCur{
+    display:none;
+    border:1px solid #d3d3d3;
+    background-color:#f9f9f9;
+    position:absolute;
+    width:100%;
+    margin-top:0;
+}
+
+#exhangeRatePara{
+    margin-bottom:5px;
+}
+
+#exchangePricePara{
+    margin-top:5px;
+}
+
+#toCur li{
+    padding:5px 3px;
+    cursor:pointer;
+}
+
+#toCur li:nth-child(even){
+    background-color:#f1f1f1;
+    padding:5px 3px;
+}
+
+#toCur li:hover{
+    background-color:#c1c1c1;
+}
+
+.down-arrow-icon{
+    width:13px;
 }
