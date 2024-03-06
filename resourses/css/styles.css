@@ -120,19 +120,39 @@ select:focus{
     align-items: center;
 }
 
-#toCur,
-#toCur{
+#toCurList,
+#fromCurList{
     list-style: none;
     padding-left:0;
 }
 
-#toCur{
-    display:none;
+.curList{
     border:1px solid #d3d3d3;
     background-color:#f9f9f9;
     position:absolute;
     width:100%;
     margin-top:0;
+    max-height: 200px;
+    overflow-y: scroll;
+    z-index:9;
+}
+
+.curList::-webkit-scrollbar {
+    width: 7px;
+}
+  
+.curList::-webkit-scrollbar-track {
+background: #f1f1f1;
+}
+  
+  /* Handle */
+.curList::-webkit-scrollbar-thumb {
+background: #888;
+}
+  
+  /* Handle on hover */
+.curList::-webkit-scrollbar-thumb:hover {
+background: #555;
 }
 
 #exhangeRatePara{
@@ -143,20 +163,28 @@ select:focus{
     margin-top:5px;
 }
 
-#toCur li{
+.curList li{
     padding:5px 3px;
     cursor:pointer;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
-#toCur li:nth-child(even){
-    background-color:#f1f1f1;
+.curList li:nth-child(even){
+    background-color:#e5e5e5;
     padding:5px 3px;
 }
 
-#toCur li:hover{
+.curList li:hover{
     background-color:#c1c1c1;
 }
 
 .down-arrow-icon{
     width:13px;
+}
+
+.span-cur{
+    font-size:14px;
+    color:#555;
 }

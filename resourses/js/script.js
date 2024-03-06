@@ -2,74 +2,66 @@
 
 const currenciesURL = "https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies";
 const countryURL = "../resourses/js/country.json";
+const curURL = "../resourses/js/cur.js";
 
-const curImg = document.querySelector("#cur-img");
-const toImg = document.querySelector("#to-img");
 
-const fromCur = "usd";
-//const fromFlag = "us"
+const fromCurDiv = document.querySelector("#fromCurDiv");
+const toCurDiv = document.querySelector("#toCurDiv");
 
-const toCur = "pkr"
-//const toFlag = "pk";
+const toCurList = document.querySelector("#toCurList");
+const fromCurList = document.querySelector("#fromCurList");
 
-async function updateCurrency(){
+let fromCurListItems = "gg";
 
-    const responseCountry = await fetch(countryURL);
-    const country = await responseCountry.json();
+fromCurListItems = "kk";
+
+const fromCur = "US";
+const toCur = "PK";
+
+(async () => {
 
     const responsesCur = await fetch(`${currenciesURL}.json`);
     const currencies = await responsesCur.json();
+    let listItems = "";
+    let fromCurDivInner = ""
+    let toCurDivInner = ""
 
-    const rate = currencies;
-    const countryCode  = {
-        pk:{
-            country_iso3: 'pak', 
-            country_iso_numeric: '586', 
-            country_name: "Paksistan", 
-            currency_name: 'pakistan rupee', 
-            currency_code: 'pkr',
-            currency_number: "586"
-        },
-        us:{
-            country_iso3: "usa",
-            country_iso_numeric: "840",
-            country_name: "united states of america (the)",
-            currency_name: "us dollar",
-            currency_code: "usd",
-            currency_number: "840"
+    for (const key in countryList) {
+
+        listItems += `<li data-cur="${countryList[key]}"> <span class="span-cur">${key}</span> <img class="flag-img" src="https://flagsapi.com/${countryList[key]}/flat/64.png" alt="flag of "> </li>`;
+
+        if(countryList[key] === fromCur){
+            fromCurDivInner = ` <span class="span-cur" data-cur="${countryList[key]}">${key}</span> <img class="flag-img" src="https://flagsapi.com/${countryList[key]}/flat/64.png" alt="flag of "> <img class="down-arrow-icon" src="resourses/img/down.png" alt="down arrow icon">`;
+        }
+
+        if(countryList[key] === toCur){
+            toCurDivInner = ` <span class="span-cur" data-cur="${countryList[key]}">${key}</span> <img class="flag-img" src="https://flagsapi.com/${countryList[key]}/flat/64.png" alt="flag of "> <img class="down-arrow-icon" src="resourses/img/down.png" alt="down arrow icon">`;
         }
     }
 
-    for (const key in countryCode) {
-        if(countryCode[key].currency_code === fromCur){
-            curImg.src = `https://flagsapi.com/${(key).toUpperCase()}/flat/64.png`;
-        }
+    toCurList.innerHTML = listItems;
+    fromCurList.innerHTML = listItems;
 
-        if(countryCode[key].currency_code === toCur){
-            toImg.src = `https://flagsapi.com/${(key).toUpperCase()}/flat/64.png`;
-        }
-      }
+    fromCurDiv.innerHTML = fromCurDivInner;
+    toCurDiv.innerHTML = toCurDivInner;
+
+    fromCurListItems = Array.from(document.querySelectorAll("#fromCurList li"));
+})();
+
+
+
+console.log(fromCurListItems)
+
+for(const fromCurListItem of fromCurListItems){
+    fromCurListItem.addEventListener('click',(e)=>{
+        console.log(this)
+        // if(countryList[key] === fromCur){
+        //     fromCurDivInner = ` <span class="span-cur" data-cur="${countryList[key]}">${key}</span> <img class="flag-img" src="https://flagsapi.com/${countryList[key]}/flat/64.png" alt="flag of "> <img class="down-arrow-icon" src="resourses/img/down.png" alt="down arrow icon">`;
+        // }
+    });
 }
 
-updateCurrency();
+console.log("UL:",fromCurListItems)
 
-function populateCur(){
 
-}
-
-// console.dir()
-
-// const fromCur = "usd";
-// const toCur = "pkr"
-// const currencies = {
-//     date: '10-10-10',
-//     usd: {
-//         pkr: 300,
-//         ind: 200
-//     }
-// };
-
-// const curr = `${currencies}[date]`
-
-// console.log("Res:",curr,currencies[fromCur][toCur]);
 
