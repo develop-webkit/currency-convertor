@@ -104,7 +104,7 @@ select:focus{
     cursor:pointer;
 }
 
-.cur-img{
+.flag-img{
     width: 27px;
     vertical-align: middle;
 }
@@ -117,6 +117,7 @@ select:focus{
     display: flex;
     justify-content: space-between;
     cursor: pointer;
+    align-items: center;
 }
 
 #toCur,
