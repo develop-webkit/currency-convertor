@@ -50,18 +50,32 @@ const toCur = "PK";
 
 
 
-console.log(fromCurListItems)
+// document.addEventListener('readystatechange', () => {
+//     console.log("ready");
+//     console.log(fromCurListItems);
+//     for(const fromCurListItem of fromCurListItems){
+//         fromCurListItem.addEventListener('click',(e)=>{
+//             console.log(this)
+//             if(countryList[key] === fromCur){
+//                 fromCurDivInner = ` <span class="span-cur" data-cur="${countryList[key]}">${key}</span> <img class="flag-img" src="https://flagsapi.com/${countryList[key]}/flat/64.png" alt="flag of "> <img class="down-arrow-icon" src="resourses/img/down.png" alt="down arrow icon">`;
+//             }
+//         });
+//     }
+// });
 
-for(const fromCurListItem of fromCurListItems){
-    fromCurListItem.addEventListener('click',(e)=>{
-        console.log(this)
-        // if(countryList[key] === fromCur){
-        //     fromCurDivInner = ` <span class="span-cur" data-cur="${countryList[key]}">${key}</span> <img class="flag-img" src="https://flagsapi.com/${countryList[key]}/flat/64.png" alt="flag of "> <img class="down-arrow-icon" src="resourses/img/down.png" alt="down arrow icon">`;
-        // }
-    });
-}
+setInterval( () =>{
+    for(const fromCurListItem of fromCurListItems){
+        fromCurListItem.addEventListener('click',(e)=>{
+            const keyValue = e.target.dataset.cur;
+            console.log(countryList,keyValue);
 
-console.log("UL:",fromCurListItems)
+            fromCurDiv.innerHTML = ` <span class="span-cur" data-cur="${countryList[keyValue]}">${keyValue}</span> <img class="flag-img" src="https://flagsapi.com/${countryList[keyValue]}/flat/64.png" alt="flag of "> <img class="down-arrow-icon" src="resourses/img/down.png" alt="down arrow icon">`;
+
+        });
+    }
+}, 200);
+
+
 
 
 
