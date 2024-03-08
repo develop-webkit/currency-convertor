@@ -12,8 +12,7 @@ const toCurList = document.querySelector("#toCurList");
 const fromCurList = document.querySelector("#fromCurList");
 
 let fromCurListItems = "gg";
-
-fromCurListItems = "kk";
+let toCurListItems = "gg";
 
 const fromCur = "US";
 const toCur = "PK";
@@ -46,36 +45,35 @@ const toCur = "PK";
     toCurDiv.innerHTML = toCurDivInner;
 
     fromCurListItems = Array.from(document.querySelectorAll("#fromCurList li"));
+    toCurListItems = Array.from(document.querySelectorAll("#toCurList li"));
 })();
 
-
-
-// document.addEventListener('readystatechange', () => {
-//     console.log("ready");
-//     console.log(fromCurListItems);
-//     for(const fromCurListItem of fromCurListItems){
-//         fromCurListItem.addEventListener('click',(e)=>{
-//             console.log(this)
-//             if(countryList[key] === fromCur){
-//                 fromCurDivInner = ` <span class="span-cur" data-cur="${countryList[key]}">${key}</span> <img class="flag-img" src="https://flagsapi.com/${countryList[key]}/flat/64.png" alt="flag of "> <img class="down-arrow-icon" src="resourses/img/down.png" alt="down arrow icon">`;
-//             }
-//         });
-//     }
-// });
 
 setInterval( () =>{
     for(const fromCurListItem of fromCurListItems){
         fromCurListItem.addEventListener('click',(e)=>{
-            const keyValue = e.target.dataset.cur;
-            console.log(countryList,keyValue);
+                const keyValue = e.currentTarget.dataset.cur;
+                const  key = Object.keys(countryList).find(k=>countryList[k]===keyValue);
+                fromCurDiv.innerHTML = ` <span class="span-cur" data-cur="${key}">${key}</span> <img class="flag-img" src="https://flagsapi.com/${keyValue}/flat/64.png" alt="flag of "> <img class="down-arrow-icon" src="resourses/img/down.png" alt="down arrow icon">`;
+        });
+    }
 
-            fromCurDiv.innerHTML = ` <span class="span-cur" data-cur="${countryList[keyValue]}">${keyValue}</span> <img class="flag-img" src="https://flagsapi.com/${countryList[keyValue]}/flat/64.png" alt="flag of "> <img class="down-arrow-icon" src="resourses/img/down.png" alt="down arrow icon">`;
-
+    for(const toCurListItem of toCurListItems){
+        toCurListItem.addEventListener('click',(e)=>{
+                const keyValue = e.currentTarget.dataset.cur;
+                const  key = Object.keys(countryList).find(k=>countryList[k]===keyValue);
+                toCurDiv.innerHTML = ` <span class="span-cur" data-cur="${key}">${key}</span> <img class="flag-img" src="https://flagsapi.com/${keyValue}/flat/64.png" alt="flag of "> <img class="down-arrow-icon" src="resourses/img/down.png" alt="down arrow icon">`;
         });
     }
 }, 200);
 
+fromCurDiv.addEventListener('click',(e) =>{
+    e.currentTarget.nextElementSibling.style.display = "block";
+});
 
+
+
+document.addEventListener('click', ())
 
 
 
