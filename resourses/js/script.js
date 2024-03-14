@@ -11,6 +11,9 @@ const toCurDiv = document.querySelector("#toCurDiv");
 const toCurList = document.querySelector("#toCurList");
 const fromCurList = document.querySelector("#fromCurList");
 
+const exchangeIcon = document.querySelector("#exchange-icon");
+
+
 let fromCurListItems = "gg";
 let toCurListItems = "gg";
 
@@ -65,15 +68,36 @@ setInterval( () =>{
                 toCurDiv.innerHTML = ` <span class="span-cur" data-cur="${key}">${key}</span> <img class="flag-img" src="https://flagsapi.com/${keyValue}/flat/64.png" alt="flag of "> <img class="down-arrow-icon" src="resourses/img/down.png" alt="down arrow icon">`;
         });
     }
-}, 200);
+}, 500);
+
+
+function handleClickOutside(place,placeEvent){
+    const ElementToCheck1 = document.querySelector(`#${place}CurList`);
+    const ElementToCheck2 = document.querySelector(`#${place}CurDiv`);
+
+    if( ElementToCheck1.contains(placeEvent.target) || ! ElementToCheck2.contains(placeEvent.target)){
+        ElementToCheck1.style.display = "none";
+    }
+};
+
+document.addEventListener('click', (Event) => {
+    handleClickOutside("from",Event);
+    handleClickOutside("to",Event);
+});
 
 fromCurDiv.addEventListener('click',(e) =>{
     e.currentTarget.nextElementSibling.style.display = "block";
 });
 
+toCurDiv.addEventListener('click',(e) =>{
+    e.currentTarget.nextElementSibling.style.display = "block";
+});
 
-
-document.addEventListener('click', ())
+exchangeIcon.addEventListener('click', () =>{
+    const repRaplce = fromCurDiv.innerHTML;
+    fromCurDiv.innerHTML = toCurDiv.innerHTML
+    toCurDiv.innerHTML = repRaplce;
+});
 
 
 

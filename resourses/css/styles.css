@@ -26,7 +26,7 @@ input:focus-visible  {
     border-radius: 10px;
 }
 
-.exchange-icon{
+#exchange-icon{
     max-width:20px;
     cursor:pointer;
     margin-top: 30px;
