@@ -32,6 +32,15 @@ input:focus-visible  {
     margin-top: 30px;
 }
 
+.currecnyNameSize{
+    font-size:0.9rem;
+}
+
+#singleExchangeRate,
+#toCurrentRateFull{
+    font-weight: bold;
+}
+
 .footer-notes{
     position:fixed;
     bottom:0;

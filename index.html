@@ -13,7 +13,7 @@
     
             <div class="input-div">
                 <label for="input-number" class="input-para">Enter Amount
-                    <input id="input-number" type="number">
+                    <input id="input-number" type="number" value="100">
                 </label>
             </div>
             <div class="cur-selection-div">
@@ -36,7 +36,6 @@
                         To
                         <div id="toCurDiv" class="cur-upper-div">
                             
-                            
                         </div>
                         <ul class="curList" id="toCurList">
                            
@@ -45,8 +44,15 @@
                 </div>
             </div>
             <div class="result-div">
-                <p id="exhangeRatePara">1 USD = 300 PKR</p>
-                <p id="exchangePricePara">30,000 PKR</p>
+                <p id="exhangeRatePara">
+                    1 <span class="currecnyNameSize" id="fromCurrentName">USD</span> 
+                    = <span id="singleExchangeRate"></span> 
+                    <span class="currecnyNameSize" id="toCurrentName">PKR</span>
+                </p>
+                <p id="exchangePricePara">
+                    <span id="toCurrentRateFull"></span> 
+                    <span class="currecnyNameSize" id="toCurrentNameFull">Pakistan Rupee</span>
+                </p>
             </div>
             <div class="btn-div">
                 <button type="button" id="submit-btn">Get Exhange Rate</button>
